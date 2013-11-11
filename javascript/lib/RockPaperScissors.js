@@ -1,7 +1,6 @@
-function Player() {
-
+function Player(name) {
+  this.name = name;
 }
-
 
 Player.prototype.picks = function(pick) {
   this.pick = pick; 
@@ -29,7 +28,20 @@ Game.prototype.winner = function() {
     return this.player2;
   }
 }
+
 Game.prototype.samePick = function() {
   return this.player1.pick == this.player2.pick;
 }
 
+Game.prototype.computerPick = function() {
+  var randomNumber = Math.random();
+  if(randomNumber < 0.33) {
+    return "rock";
+  }
+  else if(randomNumber > 0.66) {
+    return "scissors";
+  }
+  else {
+    return "paper";
+  }
+}
