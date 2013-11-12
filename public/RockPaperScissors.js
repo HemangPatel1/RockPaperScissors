@@ -35,7 +35,7 @@ Game.prototype.samePick = function() {
 
 Game.prototype.computerPick = function() {
   var randomNumber = Math.random();
-  if(randomNumber < 0.33) {
+  if(randomNumber < 0.53) {
     return "rock";
   }
   else if(randomNumber > 0.66) {
