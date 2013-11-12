@@ -8,24 +8,22 @@
 <body>
 
 <div id="Winner">
-<p>Rock Paper Scissors.</p>
+  <p>Rock Paper Scissors.</p>
 </div>
 
 <div id="results_div">
-<table class="results_table">
-<tr>
-<td>Computer</td>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td>Player</td>
-</tr>
-<tr>
-<td id="computer_tally"></td>
-<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-<td id="player_tally"></td>
-</tr>
-</table>
-</div>
-
+  <table class="results_table">
+    <tr>
+      <td>Computer</td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td>Player</td>
+    </tr>
+    <tr>
+      <td id="computer_tally"></td>
+      <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+      <td id="player_tally"></td>
+    </tr>
+  </table>
 </div>
 
 <footer class="footer">
@@ -36,7 +34,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="RockPaperScissors.js"></script>
-
 
 <script>
   var computer = new Player('Computer')
@@ -49,43 +46,41 @@
 
     if(game.winner()) {
       if (game.winner().name == 'You') {
-	$( "#Winner p" ).html( "You Win." );
-	$( "#Winner" ).css( "background-color", "#84E900" );
-	$( "body" ).css( "background-color", "#84E900" );
-  }
+      	$( "#Winner p" ).html( "You Win." );
+      	$( "#Winner" ).css( "background-color", "#84E900" );
+      	$( "body" ).css( "background-color", "#84E900" );
+    }
     else if (game.winner().name == 'Computer') {
-	$( "#Winner p:first" ).html( "Computer Wins." );
-	$( "#Winner" ).css( "background-color", "#fb4ab0" );
-	$( "body" ).css( "background-color", "#fb4ab0" );
-  
+    	$( "#Winner p:first" ).html( "Computer Wins." );
+    	$( "#Winner" ).css( "background-color", "#fb4ab0" );
+    	$( "body" ).css( "background-color", "#fb4ab0" );
+    }
   }
-       }
     else {
-	$( "#Winner p:first" ).html( "Draw." );
-	$( "#Winner" ).css( "background-color", "#5CCCCC" );
-	$( "body" ).css( "background-color", "#5CCCCC" );
-	
-  }
+    	$( "#Winner p:first" ).html( "Draw." );
+    	$( "#Winner" ).css( "background-color", "#5CCCCC" );
+    	$( "body" ).css( "background-color", "#5CCCCC" );
+	}
 
-  if (game.winner() == null) {
-        $.post('/score', { winner: "Draw" } );
+  if (game.winner() == null)  {
+    $.post('/score', { winner: "Draw" }, updateScore );
   }
-  else	{  
-	$.post('/score', { winner: game.winner().name } );
+  else  {  
+	  $.post('/score', { winner: game.winner().name }, updateScore );
   }
   
-  $.get('/score_computer', function(data) {
-	  $( "#computer_tally" )
-	   .html("" + data);
-	   console.log(data);
-   });
-  $.get('/score_player', function(data) {
-	  $( "#player_tally" )
-	   .html("" + data);
-	   console.log(data);
-
-
-   });
+  function updateScore() {
+  	$.get('/score_computer', function(data) {
+  	  $( "#computer_tally" )
+  	   .html("" + data);
+  	   console.log(data);
+    });
+    $.get('/score_player', function(data) {
+  	  $( "#player_tally" )
+  	   .html("" + data);
+  	   console.log(data);
+    });
+  }
 });
 
 
