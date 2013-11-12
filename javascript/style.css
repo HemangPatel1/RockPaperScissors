@@ -19,10 +19,10 @@ font-family: 'Open Sans', sans-serif;
 }
 
 button.depth {
-    background: #444;
+    background: #222;
     margin: 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 3px;
  /*   box-shadow: inset 0 0 2px 2px hsla(0,0%,0%,.2),
                 inset 0 0 2px 4px hsla(0,0%,0%,.2),
                 inset 0 0 2px 6px hsla(0,0%,0%,.2),
