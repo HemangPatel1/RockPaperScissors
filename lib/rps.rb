@@ -3,8 +3,8 @@ require 'data_mapper'
 require './lib/score'
 
 env = ENV["RACK_ENV"] || "development"
-#DataMapper.setup(:default, "postgres://localhost/rps_#{env}")
-DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+DataMapper.setup(:default, "postgres://localhost/rps_#{env}")
+#DataMapper.setup(:default, ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
 DataMapper.finalize
 DataMapper.auto_upgrade!

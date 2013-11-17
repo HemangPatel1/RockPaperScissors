@@ -79,6 +79,7 @@ GEM
     multi_json (1.8.2)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    pg (0.17.0)
     rack (1.5.2)
     rack-protection (1.5.1)
       rack
@@ -124,5 +125,6 @@ DEPENDENCIES
   data_mapper
   dm-postgres-adapter
   jasmine
+  pg
   shotgun
   sinatra
